@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mjwin54edbk5"
+path="res://.godot/imported/Fire.wav-9f8f9b821d88254bb0235eb9ac31db46.sample"
+
+[deps]
+
+source_file="res://Assets/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/NinjaAdventure/Sounds/Game/Fire.wav"
+dest_files=["res://.godot/imported/Fire.wav-9f8f9b821d88254bb0235eb9ac31db46.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

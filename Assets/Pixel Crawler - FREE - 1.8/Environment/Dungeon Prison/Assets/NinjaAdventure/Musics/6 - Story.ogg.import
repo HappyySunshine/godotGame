@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b5b5ai8uk34w5"
+path="res://.godot/imported/6 - Story.ogg-21b45a8ca928aa8e7076bda163b684ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/NinjaAdventure/Musics/6 - Story.ogg"
+dest_files=["res://.godot/imported/6 - Story.ogg-21b45a8ca928aa8e7076bda163b684ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

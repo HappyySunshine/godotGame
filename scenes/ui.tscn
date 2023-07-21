@@ -1,0 +1,181 @@
+[gd_scene load_steps=20 format=3 uid="uid://6kdwy46c3yab"]
+
+[ext_resource type="Texture2D" uid="uid://dsg7i1qa3udg8" path="res://Assets/Ui/box2.png" id="1_4x7ny"]
+[ext_resource type="Script" path="res://Ui.gd" id="1_oybls"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_u3ret"]
+[ext_resource type="Texture2D" uid="uid://c8gjsis3afasu" path="res://Assets/Ui/button.png" id="2_c06hr"]
+[ext_resource type="Texture2D" uid="uid://yid4lr2gj43" path="res://Assets/sprites/free_icons2.png" id="2_tep2f"]
+[ext_resource type="Texture2D" uid="uid://cuklola78q2p7" path="res://Assets/sprites/free_icons1.png" id="3_8ijso"]
+[ext_resource type="FontFile" uid="uid://cxy00bvtt5ct5" path="res://rainyhearts.ttf" id="3_wo8xb"]
+[ext_resource type="Texture2D" uid="uid://t6ug21p3thlb" path="res://Assets/sprites/free_switches.png" id="4_oe1to"]
+[ext_resource type="Material" uid="uid://bosewi48es52x" path="res://scenes/heart_material.tres" id="8_b7j0t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdw3f"]
+
+[sub_resource type="Animation" id="Animation_getob"]
+resource_name = "hearts"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("items:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mtjf"]
+_data = {
+"hearts": SubResource("Animation_getob")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skpva"]
+atlas = ExtResource("3_8ijso")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omea1"]
+atlas = ExtResource("3_8ijso")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3met"]
+atlas = ExtResource("3_8ijso")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4agu"]
+atlas = ExtResource("3_8ijso")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6stxy"]
+atlas = ExtResource("3_8ijso")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khg6r"]
+atlas = ExtResource("3_8ijso")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uajxj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8ijso")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skpva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omea1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3met")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4agu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6stxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khg6r")
+}],
+"loop": true,
+"name": &"hearts",
+"speed": 5.0
+}]
+
+[node name="Ui" type="Node2D"]
+script = ExtResource("1_u3ret")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Menu" type="NinePatchRect" parent="CanvasLayer"]
+visible = false
+offset_left = 317.0
+offset_top = 105.0
+offset_right = 783.0
+offset_bottom = 497.0
+texture = ExtResource("1_4x7ny")
+patch_margin_left = 1
+patch_margin_top = 9
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Menu"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 56.0
+offset_right = 377.0
+offset_bottom = 222.0
+texture_normal = ExtResource("2_c06hr")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu/TextureButton"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 33.0
+offset_right = 117.0
+offset_bottom = 51.0
+scale = Vector2(4, 4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wo8xb")
+text = "play"
+
+[node name="Button" type="Button" parent="CanvasLayer/Menu"]
+layout_mode = 0
+offset_left = -23.0
+offset_top = 24.0
+offset_right = 13.0
+offset_bottom = 41.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_mdw3f")
+
+[node name="UiHandler" type="Node2D" parent="CanvasLayer"]
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
+script = ExtResource("1_oybls")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/UiHandler"]
+wait_time = 2.0
+autostart = true
+
+[node name="collecrables" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(-49, -3)
+texture = ExtResource("2_tep2f")
+hframes = 3
+vframes = 4
+
+[node name="items" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(61, 43)
+texture = ExtResource("3_8ijso")
+hframes = 3
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7mtjf")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+material = ExtResource("8_b7j0t")
+sprite_frames = SubResource("SpriteFrames_uajxj")
+animation = &"hearts"
+frame = 2
+frame_progress = 0.203107
+
+[node name="switches" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(212, 25)
+texture = ExtResource("4_oe1to")
+
+[connection signal="timeout" from="CanvasLayer/UiHandler/Timer" to="CanvasLayer/UiHandler" method="_on_timer_timeout"]

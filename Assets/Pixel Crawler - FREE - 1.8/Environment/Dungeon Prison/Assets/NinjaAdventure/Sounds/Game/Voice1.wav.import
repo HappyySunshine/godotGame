@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byxv6j6jewayx"
+path="res://.godot/imported/Voice1.wav-9f2a2b6663c8dc249158dddc98469abb.sample"
+
+[deps]
+
+source_file="res://Assets/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/NinjaAdventure/Sounds/Game/Voice1.wav"
+dest_files=["res://.godot/imported/Voice1.wav-9f2a2b6663c8dc249158dddc98469abb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

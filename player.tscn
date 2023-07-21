@@ -1,0 +1,321 @@
+[gd_scene load_steps=39 format=3 uid="uid://5h0xq7h1dg2b"]
+
+[ext_resource type="Script" path="res://scripts/PlayerMovement.gd" id="1_0ilje"]
+[ext_resource type="Texture2D" uid="uid://cptxfh0u4kyas" path="res://Assets/player/idle.png" id="1_xvm0r"]
+[ext_resource type="Script" path="res://scripts/custom_singal.gd" id="2_7rr4l"]
+[ext_resource type="Script" path="res://PlayerControl.gd" id="2_bw406"]
+[ext_resource type="Texture2D" uid="uid://ye1p1y5vauhw" path="res://Assets/player/walkie.png" id="2_hxnpw"]
+[ext_resource type="Script" path="res://scripts/AnimationPlayer.gd" id="3_pehup"]
+[ext_resource type="Script" path="res://AttackArea.gd" id="4_m5msy"]
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="5_bdikl"]
+[ext_resource type="Texture2D" uid="uid://bkv7s3l616yop" path="res://Assets/player/attack.png" id="5_hxxlt"]
+[ext_resource type="Texture2D" uid="uid://lc1op5apophv" path="res://Assets/player/bar_border.png" id="7_17cdb"]
+[ext_resource type="Texture2D" uid="uid://b2dm75egrbdty" path="res://Assets/player/bar_fill.png" id="7_cuqq0"]
+[ext_resource type="Texture2D" uid="uid://incgiwbmpu2y" path="res://Assets/player/load_bar1.png" id="7_vik3m"]
+[ext_resource type="Shader" path="res://damaged.gdshader" id="8_lvnu3"]
+[ext_resource type="Script" path="res://scripts/BetterTimer.gd" id="9_48c2n"]
+[ext_resource type="Texture2D" uid="uid://dsmr4rbnx8b0k" path="res://Assets/player/attack_tray.png" id="14_i3p1d"]
+[ext_resource type="Shader" path="res://attack_stray.gdshader" id="15_4n31r"]
+[ext_resource type="PackedScene" uid="uid://b7cvcibdh4v8m" path="res://scenes/HealthComponent.tscn" id="16_t7v7m"]
+[ext_resource type="Script" path="res://PlayerAttackComponent.gd" id="17_f0djy"]
+[ext_resource type="PackedScene" uid="uid://c140y2nyedi3b" path="res://scenes/hitbox_compoment.tscn" id="18_nc72v"]
+[ext_resource type="Script" path="res://scenes/PlayerHealthComponent.gd" id="18_s17le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fou5p"]
+size = Vector2(17.5, 3.875)
+
+[sub_resource type="Animation" id="Animation_4gd4x"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_7w71w"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ldfvg"]
+resource_name = "charge_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("sprites/AttackBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_2388u"]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_track_end"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprites/idle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_l0w6l"]
+resource_name = "test"
+
+[sub_resource type="Animation" id="Animation_pxens"]
+resource_name = "walkie"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/walkie:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/walkie:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+script = ExtResource("2_7rr4l")
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2u780"]
+_data = {
+"RESET": SubResource("Animation_4gd4x"),
+"attack": SubResource("Animation_7w71w"),
+"charge_attack": SubResource("Animation_ldfvg"),
+"idle": SubResource("Animation_2388u"),
+"test": SubResource("Animation_l0w6l"),
+"walkie": SubResource("Animation_pxens")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkyhx"]
+size = Vector2(29, 35)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1v285"]
+shader = ExtResource("8_lvnu3")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/amount = 0.0
+
+[sub_resource type="Gradient" id="Gradient_3osw7"]
+offsets = PackedFloat32Array(0, 0.321839)
+colors = PackedColorArray(0.762778, 0.931832, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m72q4"]
+gradient = SubResource("Gradient_3osw7")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t10ay"]
+noise_type = 2
+seed = 15
+frequency = 0.0735
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bty66"]
+noise = SubResource("FastNoiseLite_t10ay")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp35s"]
+shader = ExtResource("15_4n31r")
+shader_parameter/alpha_value = 1.0
+shader_parameter/disperse_value = 0.0
+shader_parameter/spread_value = 0.0
+shader_parameter/color = SubResource("GradientTexture2D_m72q4")
+shader_parameter/noise = SubResource("NoiseTexture2D_bty66")
+
+[sub_resource type="Animation" id="Animation_wqa1s"]
+resource_name = "attackbar_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/AttackBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ox82c"]
+_data = {
+"attackbar_fadeout": SubResource("Animation_wqa1s")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0s3d"]
+size = Vector2(18.5, 27.5)
+
+[node name="PlayerBody" type="CharacterBody2D"]
+z_index = 3
+collision_mask = 34
+script = ExtResource("1_0ilje")
+
+[node name="PlayerControl" type="Node2D" parent="."]
+script = ExtResource("2_bw406")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 7.9375)
+shape = SubResource("RectangleShape2D_fou5p")
+debug_color = Color(0.45098, 0.505882, 0.839216, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2u780")
+}
+script = ExtResource("3_pehup")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_m5msy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(22.5, 0)
+shape = SubResource("RectangleShape2D_dkyhx")
+debug_color = Color(0.796078, 0.32549, 0.690196, 0.419608)
+script = ExtResource("5_bdikl")
+
+[node name="sprites" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1v285")
+position = Vector2(0, -3)
+
+[node name="walkie" type="Sprite2D" parent="sprites"]
+visible = false
+use_parent_material = true
+texture = ExtResource("2_hxnpw")
+flip_h = true
+hframes = 2
+vframes = 2
+
+[node name="idle" type="Sprite2D" parent="sprites"]
+show_behind_parent = true
+use_parent_material = true
+texture = ExtResource("1_xvm0r")
+hframes = 2
+vframes = 2
+
+[node name="attack" type="Sprite2D" parent="sprites"]
+visible = false
+use_parent_material = true
+texture = ExtResource("5_hxxlt")
+hframes = 2
+frame = 1
+
+[node name="stray" type="Sprite2D" parent="sprites"]
+visible = false
+material = SubResource("ShaderMaterial_wp35s")
+position = Vector2(-4, 0)
+scale = Vector2(0.625, 0.9375)
+texture = ExtResource("14_i3p1d")
+
+[node name="AttackBar" type="TextureProgressBar" parent="sprites"]
+visible = false
+offset_left = -14.0
+offset_top = -21.0
+offset_right = 13.0
+offset_bottom = -13.0
+value = 40.0
+rounded = true
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_right = 1
+texture_over = ExtResource("7_17cdb")
+texture_progress = ExtResource("7_cuqq0")
+script = ExtResource("9_48c2n")
+
+[node name="LoadBar1" type="Sprite2D" parent="sprites"]
+visible = false
+position = Vector2(-4.76837e-07, 23)
+scale = Vector2(1.5, 0.75)
+texture = ExtResource("7_vik3m")
+hframes = 3
+frame = 2
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="sprites"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ox82c")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("16_t7v7m")]
+script = ExtResource("18_s17le")
+hp = 3
+sprite = NodePath("../sprites")
+
+[node name="Timer" type="Timer" parent="HealthComponent"]
+autostart = true
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("17_f0djy")
+
+[node name="HitboxCompoment" parent="." instance=ExtResource("18_nc72v")]
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxCompoment"]
+position = Vector2(0.25, -2.75)
+shape = SubResource("RectangleShape2D_r0s3d")
+debug_color = Color(0.45098, 0.505882, 0.839216, 0.419608)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="AttackComponent" method="_on_timer_timeout"]
+[connection signal="timeout" from="HealthComponent/Timer" to="HealthComponent" method="_on_timer_timeout"]
+[connection signal="area_entered" from="HitboxCompoment" to="HitboxCompoment" method="_on_area_entered"]
+[connection signal="area_shape_entered" from="HitboxCompoment" to="HitboxCompoment" method="_on_area_shape_entered"]
+[connection signal="take_damage" from="HitboxCompoment" to="HealthComponent" method="_on_hitbox_compoment_take_damage"]

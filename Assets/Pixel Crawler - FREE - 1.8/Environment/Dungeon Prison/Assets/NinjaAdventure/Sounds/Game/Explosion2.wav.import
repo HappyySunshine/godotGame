@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cf08fwggckwnp"
+path="res://.godot/imported/Explosion2.wav-40615be3be5b01c914b10be1cdce0eaa.sample"
+
+[deps]
+
+source_file="res://Assets/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/NinjaAdventure/Sounds/Game/Explosion2.wav"
+dest_files=["res://.godot/imported/Explosion2.wav-40615be3be5b01c914b10be1cdce0eaa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

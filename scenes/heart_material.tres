@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bosewi48es52x"]
+
+[ext_resource type="Shader" path="res://scenes/shine2.gdshader" id="1_w5qhe"]
+
+[resource]
+shader = ExtResource("1_w5qhe")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 1.0
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+shader_parameter/mix_amount = 1.0

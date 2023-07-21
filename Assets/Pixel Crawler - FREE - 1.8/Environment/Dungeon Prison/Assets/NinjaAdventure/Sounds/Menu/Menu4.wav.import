@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1nh1olomyibc"
+path="res://.godot/imported/Menu4.wav-a06fe4a644ba487dbec5ffc2cd11b45f.sample"
+
+[deps]
+
+source_file="res://Assets/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/NinjaAdventure/Sounds/Menu/Menu4.wav"
+dest_files=["res://.godot/imported/Menu4.wav-a06fe4a644ba487dbec5ffc2cd11b45f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

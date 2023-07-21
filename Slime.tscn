@@ -1,0 +1,198 @@
+[gd_scene load_steps=29 format=3 uid="uid://cgso0146ok2d0"]
+
+[ext_resource type="Script" path="res://SlimePhysics.gd" id="1_p3hqy"]
+[ext_resource type="PackedScene" uid="uid://c140y2nyedi3b" path="res://scenes/hitbox_compoment.tscn" id="2_adt20"]
+[ext_resource type="Texture2D" uid="uid://pwace882ra8f" path="res://Assets/sprites/slime.png" id="2_ea6o8"]
+[ext_resource type="Script" path="res://AttackComponent.gd" id="2_yginc"]
+[ext_resource type="Script" path="res://EnemyControl.gd" id="3_hfiqk"]
+[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="3_vsosg"]
+[ext_resource type="Shader" path="res://damaged.gdshader" id="6_sp0iw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mkga"]
+size = Vector2(18, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxsrb"]
+size = Vector2(101, 77)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewarq"]
+shader = ExtResource("6_sp0iw")
+shader_parameter/color = null
+shader_parameter/amount = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cniho"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cafqu"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvrxk"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbniv"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp6ho"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asof0"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iybi5"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3mt6"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh1ye"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j12h"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7yll"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1xra"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8xbw"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5awy"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcs4y"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67f2l"]
+atlas = ExtResource("2_ea6o8")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jftmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cniho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cafqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvrxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbniv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp6ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asof0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iybi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3mt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh1ye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j12h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7yll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1xra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8xbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5awy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcs4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67f2l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_byoqr"]
+_data = {
+"points": PackedVector2Array(-20.25, -3, 20.25, 3, 58, -34, 1.75, -35.75, -1.75, 35.75, 87, -12, 21.75, -1.5, -21.75, 1.5, 56, 14, 2, 29.5, -2, -29.5, 27, -11, 0, 0, 0, 0, 58, -34)
+}
+point_count = 5
+
+[node name="SlimeBody" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 33
+script = ExtResource("1_p3hqy")
+
+[node name="HitboxCompoment" parent="." instance=ExtResource("2_adt20")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxCompoment"]
+shape = SubResource("RectangleShape2D_0mkga")
+
+[node name="EnemyControl" type="Node2D" parent="."]
+script = ExtResource("3_hfiqk")
+disable_controls = true
+
+[node name="Area2D" type="Area2D" parent="EnemyControl"]
+collision_layer = 0
+
+[node name="Vision" type="CollisionShape2D" parent="EnemyControl/Area2D"]
+shape = SubResource("RectangleShape2D_oxsrb")
+
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_vsosg")
+hp = 9
+sprite = NodePath("../slime")
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("2_yginc")
+
+[node name="slime" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ewarq")
+sprite_frames = SubResource("SpriteFrames_jftmd")
+autoplay = "default"
+frame_progress = 0.330373
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0mkga")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-55, 6.28125)
+curve = SubResource("Curve2D_byoqr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(27.5021, -5.02934)
+rotation = -1.67522
+progress = 142.146
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="take_damage" from="HitboxCompoment" to="HealthComponent" method="_on_hitbox_compoment_take_damage"]

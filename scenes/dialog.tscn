@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf8637y4c52kt"]
+
+[ext_resource type="Script" path="res://Dialog.gd" id="1_dmuot"]
+[ext_resource type="FontFile" uid="uid://cxy00bvtt5ct5" path="res://rainyhearts.ttf" id="2_vjrro"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3ipc"]
+content_margin_left = 3.0
+content_margin_top = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kxx3k"]
+shadow_color = Color(0, 0, 0, 0.541176)
+
+[node name="Dialog" type="Node2D"]
+position = Vector2(3, 2)
+script = ExtResource("1_dmuot")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -127.0
+offset_top = 21.0
+offset_right = 122.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("2_vjrro")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b3ipc")
+label_settings = SubResource("LabelSettings_kxx3k")
+
+[node name="CharSpeed" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="CharSpeed" to="." method="_on_char_speed_timeout"]
